@@ -1,12 +1,11 @@
 from pydantic import BaseModel
-from typing import Optional
 
 class MonitorCreate(BaseModel):
     id: str
     timeout: int
     alert_email: str
 
-class MonitorResponte(BaseModel):
+class MonitorResponse(BaseModel):
     id: str
     timeout: int
     alert_email: str

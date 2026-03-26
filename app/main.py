@@ -8,7 +8,7 @@ app = FastAPI(
     description="A Dead Man's Switch API for monitoring remote devices.",
 )
 
-@app.post("/monitor", response_model=MonitorResponse, status_code=201)
+@app.post("/monitors", response_model=MonitorResponse, status_code=201)
 async def register_monitor(data: MonitorCreate):
     if data.id in monitors:
         raise HTTPException(status_code=409, detail=f"Monitor '{data.id}' already exists.")
