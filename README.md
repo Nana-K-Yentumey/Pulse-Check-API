@@ -23,8 +23,9 @@ sequenceDiagram
     loop Every heartbeat interval
         D->>A: POST /monitors/{id}/heartbeat
         A->>S: Lookup monitor
-        S-->>A: Monitor found (active)
-        A->>W: Reset countdown timer
+        S-->>A: Monitor found (active or paused)
+        A->>W: Cancel old timer, start new countdown
+        A->>S: Set status to active
         A-->>D: 200 OK
     end
 
@@ -32,7 +33,7 @@ sequenceDiagram
         W->>W: Countdown reaches zero
         W->>S: Update status to down
         W->>AL: Fire alert
-        AL->>AL: console.log ALERT JSON
+        AL->>AL: logger.critical ALERT JSON
     end
 
     opt Maintenance pause
