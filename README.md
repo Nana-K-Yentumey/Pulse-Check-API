@@ -54,7 +54,7 @@ sequenceDiagram
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/YOUR_USERNAME/Pulse-Check-API.git
+git clone https://github.com/Nana-K-Yentumey/Pulse-Check-API.git
 cd Pulse-Check-API
 ```
 
