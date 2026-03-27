@@ -8,6 +8,17 @@ app = FastAPI(
     description="A Dead Man's Switch API for monitoring remote devices.",
 )
 
+@app.get("/")
+async def root():
+    return {
+        "name": "Pulse Check API",
+        "version": "1.0.0",
+        "description": "A Dead Man's Switch API for monitoring remote devices.",
+        "docs": "/docs",
+        "tip": "Add /docs to the Uvicorn port address given and enter it into your browser to explore the API documentation and test the endpoints.",
+        "Example": "http://127.0.0.1:8000/docs"
+    }
+
 @app.post("/monitors", response_model=MonitorResponse, status_code=201)
 async def register_monitor(data: MonitorCreate):
     if data.id in monitors:
